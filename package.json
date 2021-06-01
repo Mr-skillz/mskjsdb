@@ -1,4 +1,11 @@
 {
+  "name": "mskDb",
+  "version": "1.0.0",
+  "author": {"name": "Mr skillz", "email": "skillzdboss@gmail.com", "url": "www.facebook.com/skillzcodeempire"},
+  "description": "this is a javascript based database",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "line-reader": "^0.4.0"
   }
