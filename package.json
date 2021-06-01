@@ -1,7 +1,7 @@
 {
-  "name": "mskDb",
+  "name": "mskjsdb",
   "version": "1.0.0",
-  "author": {"name": "Mr skillz", "email": "skillzdboss@gmail.com", "url": "www.facebook.com/skillzcodeempire"},
+  "author": {"name": "Mr skillz", "email": "skillzdboss@gmail.com", "url": "https://www.facebook.com/skillzcodeempire"},
   "description": "this is a javascript based database",
   "scripts": {
     "start": "node index.js"
