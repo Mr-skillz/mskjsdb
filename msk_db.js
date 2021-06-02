@@ -73,12 +73,5 @@ const mskDb = {
 
 mskDb.createDb('mskDb');
 
-// msc(mskDb.searchDb("auto number"));
-mskDb.dbInsert('auto number', 'test file', 'this is a test');
 
-// msc(mskDb.dbInsert('peter'));
-
-msc(mskDb.readDb("mskDb"));
-
-msc(mskDb.version)
 module.exports = { mskDb };
