@@ -4,14 +4,16 @@ function msc(c) {
 const fs = require("fs");
 const path = require("path");
 const mskDb = {
-  db: "mskDb",
+  db: (db = 'mskDb')=>{
+    return fs.writeFile(`db/${db}.msk`, '', (e) => {});
+  },
 
-  createDb: (dbName) => {
-    fs.appendFile(`${dbName}.msk`, "", (e) => {});
+  createDb: (dbName = 'mskDb') => {
+    fs.appendFile(`db/${dbName}.msk`, "", (e) => {});
   },
 
   createTable: (dbName, table) => {
-    fs.writeFile(`${dbName}.db`, table, (e) => {});
+    fs.writeFile(`db/${dbName}.msk`, table, (e) => {});
   },
 
   dbInsert: (Name, type, content) => {
@@ -31,10 +33,10 @@ const mskDb = {
       }
     }
     fs.appendFileSync(
-      `${activDb}.msk`,
+      `db/${activDb}.msk`,
       `,{"id": "${
         autoId + 1
-      }","name": "${Name} (${autoId})","type": "${type}","content": "${content}","date": "${today.toLocaleString()}", "uid": "${uid}"}\n`,
+      }","name": "${Name}","type": "${type}","content": "${content}","date": "${today.toLocaleString()}", "uid": "${uid}"}\n`,
       (e, msg) => {
         msc(msg);
       }
@@ -42,7 +44,7 @@ const mskDb = {
   },
 
   deleteDb: (dbName) => {
-    fs.unlink(`${dbName}.msk`, (data) => {});
+    fs.unlink(`db/${dbName}.msk`, (data) => {});
   },
 
   searchDb: (value) => {
@@ -58,7 +60,7 @@ const mskDb = {
   },
 
   readDb: (tableName) => {
-    rawData = fs.readFileSync(`${tableName}.msk`, "utf-8");
+    rawData = fs.readFileSync(`db/${tableName}.msk`, "utf-8");
 
     var final, finished;
     final = `[${rawData}]`.replace(",", "");
@@ -69,9 +71,8 @@ const mskDb = {
   version: "1.0.0",
   license: "MIT",
   author: "Mr skillz d boss",
+  dir: 'db/'
 };
 
-mskDb.createDb('mskDb');
 
-
-module.exports = { mskDb };
+module.exports = { mskDb, msc};
